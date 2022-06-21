@@ -4,7 +4,9 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {},
+  "scripts": {
+    "server": "clear && cd packages/server && yarn dev"
+  },
   "devDependencies": {
     "lerna": "^5.1.2"
   }
