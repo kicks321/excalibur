@@ -6,7 +6,6 @@
 <!-- Badges -->
 <div align="center">
     <img src="https://badges.pufler.dev/visits/rangyia/excalibur"/> 
-    <img src="https://heroku-badge.herokuapp.com/?app=rangyia-excalibur"/>
 </div>
 
 <!-- Profile Overview -->
