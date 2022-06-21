@@ -1,6 +1,6 @@
 <!-- Profile Overview -->
 <div align="center">
-    <img src="https://github.com/rangyia/Excalibur/.github/img/img-readme-cover-01.jpg" />
+    <img src="https://github.com/Rangyia/excalibur/blob/main/.github/img/img-readme-cover-01.jpg" />
 </div>
 
 <!-- Badges -->
