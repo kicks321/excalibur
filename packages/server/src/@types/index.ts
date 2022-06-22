@@ -1,2 +1,2 @@
-export * from "./Configuration";
-export * from "./Extensions";
+export * from './Configuration';
+export * from './Extensions';

@@ -1,4 +1,4 @@
-import { Maybe } from "./Extensions";
+import { Maybe } from './Extensions';
 
 export type Configuration = {
   port: Maybe<number>;

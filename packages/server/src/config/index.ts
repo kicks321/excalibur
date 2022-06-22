@@ -1,8 +1,9 @@
-import { Configuration, Maybe } from "src/@types";
-require("dotenv").config();
+import { Configuration, Maybe } from 'src/@types';
+import { config } from 'dotenv';
+config();
 
 const convertToInt = (value?: string): Maybe<number> => {
-  if (typeof value === "string") return Number.parseInt(value);
+  if (typeof value === 'string') return Number.parseInt(value);
   return null;
 };
 
