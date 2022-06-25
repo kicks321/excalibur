@@ -1,4 +1,10 @@
-import { ApolloServer, gql } from 'apollo-server';
+import express from 'express';
+import { ApolloServer, gql } from 'apollo-server-express';
+import compression from 'compression';
+import cors from 'cors';
+import depthLimit from 'graphql-depth-limit';
+import { createServer } from 'http';
+import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import Config from './config';
 
 const typeDefs = gql`
@@ -41,9 +47,28 @@ const resolvers = {
 };
 
 const main = async () => {
-  const server = new ApolloServer({ typeDefs, resolvers });
-  await server.listen(Config.port);
-  console.log('🚀 Server started on https://localhost:4000');
+  const app = express();
+
+  // Middlewares
+  app.use(cors());
+  app.use(compression());
+
+  const httpServer = createServer(app);
+
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    validationRules: [depthLimit(7)],
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+  });
+  await server.start();
+
+  // Apply express to Apollo server
+  server.applyMiddleware({ app, path: '/graphql' });
+
+  httpServer.listen({ port: Config.port }, (): void =>
+    console.log(`🚀 GraphQL is now running on http://localhost:4000/graphql`),
+  );
 };
 
 main();
