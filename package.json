@@ -5,7 +5,8 @@
     "packages/*"
   ],
   "scripts": {
-    "server": "clear && cd packages/server && yarn dev"
+    "server": "clear && cd packages/server && yarn dev",
+    "start": "clear && cd packages/server && yarn build && yarn start"
   },
   "devDependencies": {
     "lerna": "^5.1.2"

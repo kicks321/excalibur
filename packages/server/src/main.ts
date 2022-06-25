@@ -64,7 +64,10 @@ const main = async () => {
   await server.start();
 
   // Apply express to Apollo server
-  server.applyMiddleware({ app, path: '/graphql' });
+  server.applyMiddleware({
+    app,
+    path: '/graphql',
+  });
 
   httpServer.listen({ port: Config.port }, (): void =>
     console.log(`🚀 GraphQL is now running on http://localhost:4000/graphql`),
