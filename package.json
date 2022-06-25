@@ -6,7 +6,9 @@
   ],
   "scripts": {
     "server": "clear && cd packages/server && yarn dev",
-    "start": "clear && cd packages/server && yarn build && yarn start"
+    "build": "clear && cd packages/server && yarn build && yarn build",
+    "start": "clear && cd packages/server && yarn build && yarn start",
+    "deploy": "clear && git add . && git commit -m 'New configuration for heroku deployment' && git push -u origin main"
   },
   "devDependencies": {
     "lerna": "^5.1.2"
