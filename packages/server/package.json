@@ -24,6 +24,7 @@
     "graphql-depth-limit": "^1.1.0",
     "graphql-tools": "^8.2.12",
     "reflect-metadata": "^0.1.13",
+    "tsc": "^2.0.4",
     "typeorm": "^0.3.6"
   },
   "devDependencies": {
