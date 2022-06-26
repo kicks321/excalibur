@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "lerna run dev --stream",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "build": "lerna run build",
