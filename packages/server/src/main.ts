@@ -6,6 +6,7 @@ import depthLimit from 'graphql-depth-limit';
 import { createServer } from 'http';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import Config from './config';
+import os from 'os';
 
 const typeDefs = gql`
   type Person {
@@ -47,30 +48,33 @@ const resolvers = {
 };
 
 const main = async () => {
+  // Express
   const app = express();
-
-  // Middlewares
   app.use(cors());
   app.use(compression());
 
+  // Http
   const httpServer = createServer(app);
 
+  // Apollo
   const server = new ApolloServer({
     typeDefs,
     resolvers,
     validationRules: [depthLimit(7)],
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
+
+  // Required to start before applying middleware
   await server.start();
 
-  // Apply express to Apollo server
   server.applyMiddleware({
     app,
     path: '/graphql',
   });
 
+  // Start the HttpServer
   httpServer.listen({ port: Config.port }, (): void =>
-    console.log(`🚀 GraphQL is now running on http://localhost:4000/graphql`),
+    console.log(`🚀 GraphQL is now running on http://${os.hostname}:${Config.port}`),
   );
 };
 
