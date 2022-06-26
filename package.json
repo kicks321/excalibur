@@ -5,9 +5,12 @@
     "packages/*"
   ],
   "scripts": {
-    "server": "clear && lerna --scope=@excalibur/server run dev",
-    "start": "clear && cd packages/server && yarn start",
-    "postinstall": "clear && cd packages/server && yarn build",
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "build": "lerna run build",
+    "lint": "lerna run lint",
+    "pretty": "lerna run pretty",
+    "postinstall": "yarn run bootstrap && yarn run build",
     "deploy": "clear && git add . && git commit -m 'New configuration for heroku deployment' && git push -u origin main"
   },
   "devDependencies": {
