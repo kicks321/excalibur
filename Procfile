@@ -1,1 +1,1 @@
-server: yarn run dev
+server: node packages/server/build/main.js
