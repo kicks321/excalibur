@@ -2,6 +2,6 @@
   "root": "./packages/frontend/dist",
   "clean_urls": true,
   "routes": {
-    "/": "index.html"
+    "/**": "index.html"
   }
 }
