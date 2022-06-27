@@ -7,6 +7,7 @@ import { createServer } from 'http';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import Config from './config';
 import os from 'os';
+import path from 'path';
 
 const typeDefs = gql`
   type Person {
@@ -52,6 +53,10 @@ const main = async () => {
   const app = express();
   app.use(cors());
   app.use(compression());
+
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/dist', 'index.html'));
+  });
 
   // Http
   const httpServer = createServer(app);
