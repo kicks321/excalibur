@@ -11,7 +11,7 @@
     "build": "lerna run build",
     "lint": "lerna run lint",
     "pretty": "lerna run pretty",
-    "postinstall": "yarn run bootstrap && yarn run dev",
+    "postinstall": "yarn run bootstrap && yarn run build",
     "deploy": "clear && git add . && git commit -m 'You think I care about personal dev commit messages? Nah fam...' && git push -u origin main"
   },
   "devDependencies": {
