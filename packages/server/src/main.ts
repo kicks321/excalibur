@@ -76,7 +76,7 @@ const main = async () => {
 
   server.applyMiddleware({
     app,
-    path: '/graphql',
+    path: '/',
   });
 
   // Start the HttpServer

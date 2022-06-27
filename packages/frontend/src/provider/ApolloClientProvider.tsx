@@ -7,7 +7,7 @@ type Props = {
 
 const ApolloClientProvider: React.FC<Props> = ({ children }) => {
   const client = new ApolloClient({
-    uri: `${import.meta.env.VITE_API_SERVER}:${import.meta.env.VITE_API_PORT}/graphql`,
+    uri: `${import.meta.env.VITE_API_SERVER}:${import.meta.env.VITE_API_PORT}/`,
     cache: new InMemoryCache(),
   });
 
