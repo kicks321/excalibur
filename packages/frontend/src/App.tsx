@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { gql, useLazyQuery, useQuery } from '@apollo/client';
+import { Button } from '@mui/material';
 
 type Books = {
   books: {
@@ -9,7 +10,15 @@ type Books = {
 };
 
 function App() {
-  const { data, loading, error } = useQuery<Books>(gql`
+  const { data } = useQuery<Books>(gql`
+    query ExampleQuery {
+      books {
+        title
+      }
+    }
+  `);
+
+  const [getBooks, { data: lazyData, loading, error }] = useLazyQuery<Books>(gql`
     query ExampleQuery {
       books {
         title
@@ -27,6 +36,14 @@ function App() {
     <div className="App">
       <div>Excaliber Frontend</div>
       {data && data.books.map((book, index) => <h2>{book.title}</h2>)}
+      <Button
+        onClick={() => {
+          void getBooks();
+        }}>
+        Get Data
+      </Button>
+      {lazyData && lazyData.books.map((book, index) => <h2>{book.title}</h2>)}
+      {error && <div>{error.message}</div>}
     </div>
   );
 }
