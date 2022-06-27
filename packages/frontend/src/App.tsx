@@ -33,7 +33,8 @@ function App() {
     if (error) {
       console.log('Use Effect', error.message);
     }
-  }, [data]);
+    console.log('Use effectinggggg');
+  }, [data, error]);
 
   return (
     <div className="App">
