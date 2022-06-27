@@ -1,1 +1,1 @@
-web: node packages/server/build/main.js
+server: node packages/server/build/main.js
