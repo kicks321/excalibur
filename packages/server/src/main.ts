@@ -54,7 +54,9 @@ const main = async () => {
   app.use(cors());
   app.use(compression());
 
-  app.get('/*', (req, res) => {
+  app.use(express.static('dist'));
+
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/dist', 'index.html'));
   });
 
