@@ -30,6 +30,9 @@ function App() {
     if (data) {
       console.log(data);
     }
+    if (error) {
+      console.log('Use Effect', error.message);
+    }
   }, [data]);
 
   return (
@@ -43,7 +46,11 @@ function App() {
         Get Data
       </Button>
       {lazyData && lazyData.books.map((book, index) => <h2>{book.title}</h2>)}
-      {error && <div>{error.message}</div>}
+      {error && (
+        <div>
+          <div>{error.message}</div>
+        </div>
+      )}
     </div>
   );
 }
