@@ -5,7 +5,6 @@ import cors from 'cors';
 import depthLimit from 'graphql-depth-limit';
 import { createServer } from 'http';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
-import Config from './config';
 import os from 'os';
 import path from 'path';
 
@@ -54,12 +53,6 @@ const main = async () => {
   app.use(cors());
   app.use(compression());
 
-  app.use(express.static('dist'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/dist', 'index.html'));
-  });
-
   // Http
   const httpServer = createServer(app);
 
@@ -80,8 +73,8 @@ const main = async () => {
   });
 
   // Start the HttpServer
-  httpServer.listen({ port: Config.port }, (): void =>
-    console.log(`🚀 GraphQL is now running on http://${os.hostname}:${Config.port}`),
+  httpServer.listen({ port: process.env.PORT || 4000 }, (): void =>
+    console.log(`🚀 GraphQL is now running on http://${os.hostname}:4000`),
   );
 };
 
