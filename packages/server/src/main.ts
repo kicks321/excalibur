@@ -52,6 +52,7 @@ const main = async () => {
   const app = express();
   app.use(cors());
   app.use(compression());
+  app.use(express.static(path.join(__dirname, '..', '..', 'frontend/dist')));
 
   // Http
   const httpServer = createServer(app);
@@ -69,12 +70,12 @@ const main = async () => {
 
   server.applyMiddleware({
     app,
-    path: '/',
+    path: '/graphql',
   });
 
   // Start the HttpServer
   httpServer.listen({ port: process.env.PORT || 4000 }, (): void =>
-    console.log(`🚀 GraphQL is now running on http://${os.hostname}:4000`),
+    console.log(`GraphQL running on http://${os.hostname}:4000`),
   );
 };
 

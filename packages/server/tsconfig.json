@@ -17,7 +17,7 @@
 
     /* Emit */
     "sourceMap": true,
-    "outDir": "./build",
+    "outDir": "./dist",
     "noEmit": false,
     "newLine": "crlf",
 

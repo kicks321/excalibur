@@ -10,6 +10,7 @@ type Books = {
 };
 
 function App() {
+  const [apiError, setApiError] = useState(false);
   const { data } = useQuery<Books>(gql`
     query ExampleQuery {
       books {
@@ -31,6 +32,7 @@ function App() {
       console.log(data);
     }
     if (error) {
+      setApiError(true);
       console.log('Use Effect', error.message);
     }
     console.log('Use effectinggggg');
@@ -47,9 +49,10 @@ function App() {
         Get Data
       </Button>
       {lazyData && lazyData.books.map((book, index) => <h2>{book.title}</h2>)}
-      {error && (
+      {apiError && (
         <div>
-          <div>{error.message}</div>
+          <h1>Error</h1>
+          <div>{apiError}</div>
         </div>
       )}
     </div>
