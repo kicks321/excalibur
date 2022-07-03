@@ -74,8 +74,8 @@ const main = async () => {
   });
 
   // Start the HttpServer
-  httpServer.listen({ port: process.env.PORT || 4000 }, (): void =>
-    console.log(`GraphQL running on http://${os.hostname}:4000`),
+  httpServer.listen({ port: 80 }, (): void =>
+    console.log(`GraphQL running on http://${os.hostname}:80`),
   );
 };
 
