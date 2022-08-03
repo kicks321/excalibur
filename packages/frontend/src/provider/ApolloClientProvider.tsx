@@ -7,7 +7,7 @@ type Props = {
 
 const ApolloClientProvider: React.FC<Props> = ({ children }) => {
   const client = new ApolloClient({
-    uri: `https://rangyia-excalibur.herokuapp.com/`,
+    uri: `https://rangyia-excalibur.herokuapp.com:4000/graphql`,
     cache: new InMemoryCache(),
   });
 
