@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "cd packages && cd frontend && vite preview --port 8080",
+    "start": "cd packages && cd frontend && yarn start",
     "dev": "lerna run dev --stream",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
@@ -17,6 +17,7 @@
     "deploy": "clear && git add . && git commit -m 'You think I care about personal dev commit messages? Nah fam...' && git push -u origin main"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
     "lerna": "^5.1.2"
   }
 }
