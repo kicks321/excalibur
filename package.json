@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "cd packages && cd frontend && yarn start",
+    "start": "cd packages && cd server && yarn start",
     "dev": "lerna run dev --stream",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",

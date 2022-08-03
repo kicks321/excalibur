@@ -54,6 +54,12 @@ const main = async () => {
   app.use(compression());
   app.use(express.static(path.join(__dirname, '..', '..', 'frontend/dist')));
 
+  app.get('/healthcheck', (req, res) => {
+    return res.json({
+      status: 'success',
+    });
+  });
+
   // Http
   const httpServer = createServer(app);
 

@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "node ./build/main.js",
+    "start": "node ./dist/main.js",
     "dev": "ts-node ./src/main.ts",
     "lint": "eslint --ext .ts src/",
     "prettier": "prettier --write ./src"
