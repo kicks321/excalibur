@@ -1,1 +1,1 @@
-web: node packages/server/build/main.js
+web: yarn start
