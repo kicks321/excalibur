@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "lerna run start --stream",
+    "start": "cd frontend && vite preview --port 8080",
     "dev": "lerna run dev --stream",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
