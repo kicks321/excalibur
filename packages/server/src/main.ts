@@ -7,6 +7,7 @@ import { createServer } from 'http';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import os from 'os';
 import path from 'path';
+import Config from './config/index';
 
 const typeDefs = gql`
   type Person {
@@ -84,7 +85,7 @@ const main = async () => {
   });
 
   // Start the HttpServer
-  httpServer.listen({ port: 4000 }, (): void =>
+  httpServer.listen({ port: Config.port }, (): void =>
     console.log(`GraphQL running on http://${os.hostname}:4000`),
   );
 };
