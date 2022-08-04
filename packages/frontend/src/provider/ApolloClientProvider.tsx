@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-require('dotenv').config();
+import 'dotenv/config';
 
 type Props = {
   children?: React.ReactNode;
