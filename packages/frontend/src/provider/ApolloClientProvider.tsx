@@ -8,7 +8,6 @@ type Props = {
 const ApolloClientProvider: React.FC<Props> = ({ children }) => {
   console.log('Meta: ', import.meta);
   console.log('Env: ', import.meta.env);
-  console.log('Process', process.env);
 
   const client = new ApolloClient({
     uri:
