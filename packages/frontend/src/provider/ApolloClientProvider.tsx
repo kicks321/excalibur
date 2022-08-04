@@ -1,16 +1,18 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+require('dotenv').config();
 
 type Props = {
   children?: React.ReactNode;
 };
 
 const BASE_URL = `http://localhost`;
-const PORT = import.meta.env.VITE_PORT;
+const PORT = process.env.PORT;
 
 const ApolloClientProvider: React.FC<Props> = ({ children }) => {
   console.log('Meta: ', import.meta);
   console.log('Env: ', import.meta.env);
+  console.log('Process', process.env);
 
   const client = new ApolloClient({
     uri:
