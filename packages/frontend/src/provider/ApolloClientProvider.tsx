@@ -6,7 +6,7 @@ type Props = {
 };
 
 const BASE_URL = `http://localhost`;
-const PORT = import.meta.env.PORT;
+const PORT = import.meta.env.VITE_PORT;
 
 const ApolloClientProvider: React.FC<Props> = ({ children }) => {
   const client = new ApolloClient({
