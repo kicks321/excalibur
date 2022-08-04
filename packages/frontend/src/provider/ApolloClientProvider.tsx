@@ -5,11 +5,14 @@ type Props = {
   children?: React.ReactNode;
 };
 
+const BASE_URL = `http://localhost`;
+const PORT = process.env.PORT;
+
 const ApolloClientProvider: React.FC<Props> = ({ children }) => {
   const client = new ApolloClient({
     uri:
       import.meta.env.MODE === 'production'
-        ? `http://localhost:4000/graphql`
+        ? BASE_URL + ':' + PORT + '/graphql'
         : 'http://localhost:4000/graphql',
     cache: new InMemoryCache(),
   });
