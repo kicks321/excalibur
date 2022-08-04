@@ -9,6 +9,9 @@ const BASE_URL = `http://localhost`;
 const PORT = import.meta.env.VITE_PORT;
 
 const ApolloClientProvider: React.FC<Props> = ({ children }) => {
+  console.log('Meta: ', import.meta);
+  console.log('Env: ', import.meta.env);
+
   const client = new ApolloClient({
     uri:
       import.meta.env.MODE === 'production'
