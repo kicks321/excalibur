@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "cd packages && cd server && yarn start",
+    "start": "node './packages/server/dist/main.js'",
     "dev": "lerna run dev --stream",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",

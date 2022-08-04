@@ -9,7 +9,7 @@ const ApolloClientProvider: React.FC<Props> = ({ children }) => {
   const client = new ApolloClient({
     uri:
       import.meta.env.MODE === 'production'
-        ? `https://rangyia-excalibur.herokuapp.com:4000/graphql`
+        ? `http://localhost:4000/graphql`
         : 'http://localhost:4000/graphql',
     cache: new InMemoryCache(),
   });

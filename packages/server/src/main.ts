@@ -60,6 +60,10 @@ const main = async () => {
     });
   });
 
+  app.get('/', (req, res) => {
+    return res.sendFile(path.join(__dirname, '..', '..', 'index.html'));
+  });
+
   // Http
   const httpServer = createServer(app);
 
