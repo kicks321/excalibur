@@ -10,14 +10,22 @@
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "build": "lerna run build",
+    "test": "lerna run test --stream",
     "lint": "lerna run lint",
     "pretty": "lerna run pretty",
-    "postinstall": "yarn run bootstrap && yarn run build",
     "server": "cd packages/server && yarn dev",
     "deploy": "clear && git add . && git commit -m 'You think I care about personal dev commit messages? Nah fam...' && git push -u origin main"
   },
   "devDependencies": {
+    "@types/jest": "27.5.1",
+    "@types/node": "^18.0.0",
     "concurrently": "^7.3.0",
-    "lerna": "^5.1.2"
+    "jest": "27.5.1",
+    "lerna": "^5.1.2",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.4"
   }
 }
