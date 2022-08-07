@@ -1,5 +1,6 @@
+import 'reflect-metadata';
 import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import compression from 'compression';
 import cors from 'cors';
 import depthLimit from 'graphql-depth-limit';
@@ -8,45 +9,10 @@ import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import os from 'os';
 import path from 'path';
 import Config from './config/index';
-
-const typeDefs = gql`
-  type Person {
-    id: ID!
-    name: String!
-  }
-
-  type Book {
-    title: String
-    author: Person
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
-
-const resolvers = {
-  Query: {
-    books: () => [
-      {
-        title: 'Made of Wolves',
-        authorId: '1',
-      },
-      {
-        title: 'The Visitor in the City',
-        authorId: '2',
-      },
-    ],
-  },
-  Book: {
-    author: (parent: { authorId: string | number }) => {
-      return {
-        id: parent.authorId,
-        name: parent.authorId == '1' ? 'James Carter' : 'Arthur Novotic',
-      };
-    },
-  },
-};
+import { Excalibur } from './database';
+import { DataSource } from 'typeorm';
+import typeDefs from './schema/typeDefs';
+import resolvers from './schema/resolvers';
 
 const main = async () => {
   // Express
@@ -72,6 +38,10 @@ const main = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    // @ts-ignore
+    dataSources: () => ({
+      database: new DataSource(Excalibur),
+    }),
     validationRules: [depthLimit(7)],
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });

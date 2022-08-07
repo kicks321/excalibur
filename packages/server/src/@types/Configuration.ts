@@ -1,5 +1,5 @@
-import { Maybe } from './Extensions';
+import { Nullable } from './Extensions';
 
 export type Configuration = {
-  port: Maybe<number>;
+  port: Nullable<number>;
 };
