@@ -1,3 +1,3 @@
-import ApolloClientProvider from './ApolloClientProvider';
+import ExcaliburProvider from './Excalibur.provider';
 
-export { ApolloClientProvider };
+export { ExcaliburProvider };

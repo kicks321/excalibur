@@ -15,7 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "outDir": "./build"
+    "outDir": "./build",
+    "baseUrl": ".",
+    "paths": {
+      "@excalibur": ["./src"]
+    }
   },
   "include": ["src", "jest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
