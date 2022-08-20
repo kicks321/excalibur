@@ -7,9 +7,11 @@ import AppRoutes from './routes';
 
 // Style
 import './index.css';
+import { CssBaseline } from '@mui/material';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
+    <CssBaseline />
     <ApolloClientProvider>
       <ExcaliburProvider>
         <AppRoutes />

@@ -1,5 +1,7 @@
+import { Typography } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { NavBar } from './components';
 
 type Props = {
   children?: React.ReactNode;
@@ -7,7 +9,8 @@ type Props = {
 
 const WebsiteLayout = ({ children }: Props) => {
   return (
-    <div>
+    <div className="pageContainer" data-testid="pageContainer">
+      <NavBar />
       <Outlet />
     </div>
   );
