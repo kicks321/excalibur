@@ -1,3 +1,4 @@
+import { Button } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,8 +7,7 @@ type Props = {};
 const Landing = (props: Props) => {
   return (
     <div>
-      Landing
-      <Link to="/auth">Auth</Link>
+      <Button>Hello</Button>
     </div>
   );
 };

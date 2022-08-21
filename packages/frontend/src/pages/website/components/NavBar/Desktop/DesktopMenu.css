@@ -1,0 +1,19 @@
+.navmenu {
+    margin-left: 48px !important;
+}
+
+.link:hover {
+    color: rgb(195, 165, 67);
+    text-decoration: none !important;
+}
+
+.navbar-popover-item {
+    transition: ease 0.2s;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.navbar-popover-item:hover {
+    background-color: rgb(235, 218, 163);
+    transition: ease 0.3s;
+}

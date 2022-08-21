@@ -1,39 +1,74 @@
-// Dependencies
-import React from 'react';
-import { AppBar, Box, Menu, useScrollTrigger } from '@mui/material';
-import { ExcaliburComponent } from 'src/@types';
+// Library imports
+import React, { useEffect } from 'react';
+import { Box, Button, Icon, IconButton, Image, Stack, useDisclosure } from '@chakra-ui/react';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
+import { HiMenu } from 'react-icons/hi';
+
+// Project imports
+import { ExcaliburComponent } from 'src/@types';
+import Logo from '@excalibur/frontend/src/assets/logo.png';
+import { applicationStateVar } from '../../../../apollo/Cache/ReactiveVarsCache';
+import DesktopMenu from './Desktop/DesktopMenu.component';
+import MobileMenu from './Mobile/MobileMenu.component';
+
 // Style
 import './NavBar.css';
+import { useReactiveVar } from '@apollo/client';
 
 interface NavBarProps extends ExcaliburComponent {}
 
-interface ElevationScrollProps extends Omit<ExcaliburComponent, 'children'> {
-  children: React.ReactElement;
-}
-
 const NavBar = ({ children, className, style }: NavBarProps) => {
-  const ElevationScroll = ({ children }: ElevationScrollProps) => {
-    const trigger = useScrollTrigger({
-      disableHysteresis: true,
-      threshold: 0,
-    });
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-    return React.cloneElement(children, {
-      elevation: trigger ? 4 : 0,
-    });
-  };
+  const applicationState = useReactiveVar(applicationStateVar);
+
+  useEffect(() => {
+    console.log(applicationState);
+  }, [applicationState]);
 
   return (
-    <ElevationScroll>
-      <AppBar className={classnames('navbar', className)} style={style}>
-        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-          <Menu>
-            
-          </Menu>
-        </Box>
-      </AppBar>
-    </ElevationScroll>
+    <Box
+      className={classnames('navbar', className)}
+      display={'flex'}
+      justifyContent="space-between"
+      style={style}
+      padding={applicationState.mobile ? '0px 20px' : '0px 72px'}>
+      {/* Nav bar left */}
+      <Stack
+        className={'navbar-left'}
+        data-testid={'navbar-left'}
+        spacing={4}
+        direction="row"
+        align="center">
+        <Link to="/">
+          <Image src={Logo} width={75} />
+        </Link>
+        {!applicationState.mobile ? (
+          <DesktopMenu />
+        ) : (
+          <MobileMenu isOpen={isOpen} onClose={onClose} />
+        )}
+      </Stack>
+      {/* Nav bar right */}
+      <Stack
+        className={'navbar-right'}
+        data-testid={'navbar-right'}
+        spacing={2}
+        direction="row"
+        align="center">
+        <Button variant="ghost">Login</Button>
+        <Button variant="solid">Get Started</Button>
+        {applicationState.mobile && (
+          <IconButton
+            onClick={onOpen}
+            variant={'unstyled'}
+            icon={<Icon as={() => <HiMenu size={28} />} />}
+            aria-label="Open Menu"
+          />
+        )}
+      </Stack>
+    </Box>
   );
 };
 
