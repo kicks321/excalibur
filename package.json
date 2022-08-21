@@ -9,7 +9,7 @@
     "dev": "lerna run dev --stream",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
-    "build": "lerna run build",
+    "build": "npm install -g tsc && lerna run build",
     "test": "lerna run test --stream",
     "lint": "lerna run lint",
     "pretty": "lerna run pretty",
