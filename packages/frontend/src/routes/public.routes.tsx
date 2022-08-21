@@ -3,7 +3,7 @@ import { RouteObject } from 'react-router-dom';
 
 // Website Routes
 const Website = React.lazy(() => import('../pages/website/Website'));
-const Landing = React.lazy(() => import('../pages/website/Landing/Landing'));
+const Landing = React.lazy(() => import('../pages/website/pages/Landing/Landing.page'));
 
 // Authentication Routes
 const Auth = React.lazy(() => import('../pages/auth/Auth'));
