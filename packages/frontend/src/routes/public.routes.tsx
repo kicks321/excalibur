@@ -4,6 +4,8 @@ import { RouteObject } from 'react-router-dom';
 // Website Routes
 const Website = React.lazy(() => import('../pages/website/Website'));
 const Landing = React.lazy(() => import('../pages/website/pages/Landing/Landing.page'));
+const Company = React.lazy(() => import('../pages/website/pages/Company/Company.page'));
+const Pricing = React.lazy(() => import('../pages/website/pages/Pricing/Pricing.page'));
 
 // Authentication Routes
 const Auth = React.lazy(() => import('../pages/auth/Auth'));
@@ -24,6 +26,22 @@ export const publicRoutes: RouteObject[] = [
         element: (
           <React.Suspense>
             <Landing />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: '/company',
+        element: (
+          <React.Suspense>
+            <Company />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: '/pricing',
+        element: (
+          <React.Suspense>
+            <Pricing />
           </React.Suspense>
         ),
       },

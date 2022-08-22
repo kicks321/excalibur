@@ -1,10 +1,14 @@
-import React from 'react';
-import { ExcaliburComponent } from '../../../../@types/React/index';
+import { HStack, Stack, StackProps } from '@chakra-ui/react';
+import classNames from 'classnames';
 
-interface SectionProps extends ExcaliburComponent {}
+interface SectionProps extends StackProps {}
 
-const Section = (props: SectionProps) => {
-  return <div>Section.</div>;
+const Section = ({ children, className, style, ...props }: SectionProps) => {
+  return (
+    <Stack className={classNames(className)} style={style} align={'center'} {...props}>
+      {children}
+    </Stack>
+  );
 };
 
 export default Section;

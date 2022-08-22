@@ -21,6 +21,5 @@
       "@excalibur": ["./src"]
     }
   },
-  "include": ["src", "jest.config.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "jest.config.ts", "vite.config.ts"]
 }
